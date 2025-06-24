@@ -1,0 +1,26 @@
+@model Step2ViewModel
+@{
+    var days = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+}
+<table border="1">
+    <thead>
+        <tr>
+            @for (int c = 0; c < Model.WorkingDays; c++)
+            {
+                <th>@days[c]</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (int r = 0; r < Model.SubjectsPerDay; r++)
+        {
+            <tr>
+                @for (int c = 0; c < Model.WorkingDays; c++)
+                {
+                    var cell = Model.Cells.FirstOrDefault(x => x.Row == r && x.Col == c);
+                    <td>@cell?.Subject</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

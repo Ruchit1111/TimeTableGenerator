@@ -1,0 +1,12 @@
+@model Step1ViewModel
+<form asp-action="Step1" method="post">
+    <label>Working Days:</label>
+    <input asp-for="WorkingDays" type="number" min="1" max="7" required />
+    <label>Subjects/Day:</label>
+    <input asp-for="SubjectsPerDay" type="number" min="1" max="8" required />
+    <label>Total Subjects:</label>
+    <input asp-for="TotalSubjects" type="number" min="1" required />
+    <label>Total Hours:</label>
+    <input readonly value="@Model.TotalHours" />
+    <button type="submit">Next</button>
+</form>

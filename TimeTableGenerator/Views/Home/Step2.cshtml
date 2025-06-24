@@ -1,0 +1,21 @@
+@model Step2ViewModel
+<form asp-action="Step2" method="post">
+    <input type="hidden" asp-for="WorkingDays" />
+    <input type="hidden" asp-for="SubjectsPerDay" />
+    <input type="hidden" asp-for="TotalHours" />
+    <input type="hidden" asp-for="TotalSubjects" />
+    <table>
+        @for (int i = 0; i < Model.Subjects.Count; i++)
+        {
+            <tr>
+                <td><input asp-for="@Model.Subjects[i].Name" /></td>
+                <td><input asp-for="@Model.Subjects[i].Hours" type="number" /></td>
+            </tr>
+        }
+    </table>
+    <button type="submit">Generate</button>
+</form>
+@if (!string.IsNullOrEmpty(ViewData["Error"]?.ToString()))
+{
+    <div class="text-danger">@ViewData["Error"]</div>
+}
